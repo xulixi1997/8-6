@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重庆秋甜网络科技有限公司 - 城市建设与智慧服务的领跑者</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-in-down': 'fadeInDown 0.3s ease-out forwards',
+                        'bounce-subtle': 'bounceSubtle 2s infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounceSubtle: {
+                            '0%, 100%': { transform: 'translateY(-5%)' },
+                            '50%': { transform: 'translateY(5%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .bg-dots-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Hide scrollbar for chat messages */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-2 cursor-pointer" onclick="scrollToSection('home')">
+                <div id="logo-bg" class="p-2 rounded-lg bg-white text-brand-900 transition-colors">
+                    <i data-lucide="building-2" size="24"></i>
+                </div>
+                <span id="logo-text" class="text-2xl font-bold tracking-wider text-white transition-colors">
+                    QIUTIAN<span class="text-accent-500">TECH</span>
+                </span>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden xl:flex items-center gap-8" id="desktop-nav">
+                <!-- Nav items will be injected by JS -->
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="xl:hidden text-gray-500" onclick="toggleMobileMenu()">
+                <i id="mobile-menu-icon" data-lucide="menu" class="text-white" size="28"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Dropdown -->
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 right-0 bg-white shadow-lg flex flex-col py-4 animate-fade-in-down">
+            <!-- Mobile Nav items will be injected by JS -->
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80" alt="City Skyline"
+                    class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-900/90 via-brand-900/70 to-transparent"></div>
+            </div>
+
+            <div class="container mx-auto px-4 z-10 pt-20">
+                <div class="max-w-3xl text-white space-y-6 animate-fade-in-up">
+                    <div
+                        class="inline-block bg-accent-500 px-3 py-1 text-xs font-bold tracking-widest uppercase rounded-sm mb-2">
+                        Since 2023 · 创新科技与建筑工程
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                        科技赋能 <br />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-300">
+                            智绘未来
+                        </span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-200 max-w-2xl leading-relaxed">
+                        重庆秋甜网络科技致力于为城市发展提供卓越的建筑工程与智慧解决方案。我们以创新为动力，以质量为基石，打造百年长青基业。
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                        <button onclick="scrollToSection('projects')"
+                            class="bg-accent-600 hover:bg-accent-700 text-white px-8 py-4 rounded font-semibold flex items-center justify-center transition-all hover:shadow-lg hover:scale-105">
+                            浏览案例 <i data-lucide="chevron-right" class="ml-2 h-5 w-5"></i>
+                        </button>
+                        <button onclick="scrollToSection('contact')"
+                            class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-brand-900 px-8 py-4 rounded font-semibold transition-all">
+                            联系我们
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block text-white opacity-70">
+                <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center p-1">
+                    <div class="w-1 h-2 bg-white rounded-full"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section
+            class="bg-brand-50 py-12 -mt-20 relative z-20 container mx-auto px-4 rounded-lg shadow-xl mx-4 md:mx-auto w-[90%]">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-200">
+                <div class="flex flex-col items-center p-2">
+                    <span class="text-4xl md:text-5xl font-bold text-brand-700 mb-2">2023</span>
+                    <span class="text-gray-600 font-medium text-sm md:text-base">成立年份</span>
+                </div>
+                <div class="flex flex-col items-center p-2">
+                    <span class="text-4xl md:text-5xl font-bold text-brand-700 mb-2">50+</span>
+                    <span class="text-gray-600 font-medium text-sm md:text-base">精品工程项目</span>
+                </div>
+                <div class="flex flex-col items-center p-2">
+                    <span class="text-4xl md:text-5xl font-bold text-brand-700 mb-2">100+</span>
+                    <span class="text-gray-600 font-medium text-sm md:text-base">专业团队成员</span>
+                </div>
+                <div class="flex flex-col items-center p-2">
+                    <span class="text-4xl md:text-5xl font-bold text-brand-700 mb-2">10+</span>
+                    <span class="text-gray-600 font-medium text-sm md:text-base">技术专利与奖项</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+                    <div class="w-full lg:w-1/2 relative">
+                        <div class="relative z-10 rounded-lg overflow-hidden shadow-2xl group">
+                            <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=80" alt="Construction Site"
+                                class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105" />
+                        </div>
+                        <div
+                            class="absolute -bottom-10 -right-10 w-2/3 h-2/3 bg-accent-500 -z-0 rounded-lg hidden md:block">
+                        </div>
+                        <div class="absolute -top-10 -left-10 w-40 h-40 bg-dots-pattern opacity-20 hidden md:block">
+                        </div>
+                    </div>
+
+                    <div class="w-full lg:w-1/2 space-y-8">
+                        <div>
+                            <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">关于秋甜网络科技</h2>
+                            <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                                新锐力量 智慧建筑 <br />
+                                科技引领城市更新
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-4">
+                                重庆秋甜网络科技有限公司成立于2023年，总部位于中国重庆。作为一家新兴的集建筑工程、装饰装修、市政园林与智慧城市解决方案于一体的科技型企业，我们始终秉持"诚信、创新、卓越"的核心价值观。
+                            </p>
+                            <p class="text-gray-600 leading-relaxed">
+                                依托前沿的数字技术与专业的施工管理能力，秋甜科技迅速在行业崭露头角。我们致力于将网络科技与传统建筑深度融合，为客户提供从规划设计到智慧运维的全生命周期服务，用科技手段诠释建筑之美。
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="text-brand-600 flex-shrink-0" size="20"></i>
+                                <span class="text-gray-800 font-medium">ISO 9001 质量管理体系认证</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="text-brand-600 flex-shrink-0" size="20"></i>
+                                <span class="text-gray-800 font-medium">智能化系统集成专业能力</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="text-brand-600 flex-shrink-0" size="20"></i>
+                                <span class="text-gray-800 font-medium">AAA级信用企业</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle" class="text-brand-600 flex-shrink-0" size="20"></i>
+                                <span class="text-gray-800 font-medium">绿色智慧工地示范单位</span>
+                            </div>
+                        </div>
+
+                        <button class="bg-brand-900 text-white px-8 py-3 rounded hover:bg-brand-800 transition-colors flex items-center gap-2">
+                            下载企业画册 <i data-lucide="download" size="18"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">核心业务</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">全方位智慧建筑方案</h3>
+                    <p class="text-gray-600">
+                        我们提供从规划设计到施工运维的一站式服务，满足不同客户的多样化需求。
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="services-grid">
+                    <!-- Services injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section (Refined) -->
+        <section id="process" class="py-20 bg-white overflow-hidden">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">服务流程</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">标准化作业流程</h3>
+                    <p class="text-gray-600">
+                        从项目咨询到交付使用，我们严格把控每一个环节，确保工程质量与工期，实现“零缺陷”交付。
+                    </p>
+                </div>
+
+                <div class="relative">
+                    <!-- Connecting Line (Desktop) -->
+                    <div class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-brand-200 to-transparent -translate-y-1/2 z-0">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                        <!-- Step 1 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg text-center group hover:-translate-y-2 transition-transform duration-300 border border-gray-50">
+                            <div class="w-16 h-16 mx-auto bg-white text-brand-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold border-4 border-brand-100 shadow-sm group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-200 transition-colors relative z-10">
+                                <i data-lucide="message-circle" size="24"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">需求咨询</h4>
+                            <p class="text-gray-500 text-sm">深入现场勘察，精准对接客户需求，制定初步建设策略。</p>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg text-center group hover:-translate-y-2 transition-transform duration-300 border border-gray-50">
+                            <div class="w-16 h-16 mx-auto bg-white text-brand-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold border-4 border-brand-100 shadow-sm group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-200 transition-colors relative z-10">
+                                <i data-lucide="ruler" size="24"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">规划设计</h4>
+                            <p class="text-gray-500 text-sm">依托BIM技术，出具科学、美观且符合预算的深化设计方案。</p>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg text-center group hover:-translate-y-2 transition-transform duration-300 border border-gray-50">
+                            <div class="w-16 h-16 mx-auto bg-white text-brand-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold border-4 border-brand-100 shadow-sm group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-200 transition-colors relative z-10">
+                                <i data-lucide="hammer" size="24"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">精工建造</h4>
+                            <p class="text-gray-500 text-sm">严格执行标准化施工工艺，全过程质量监控与安全管理。</p>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg text-center group hover:-translate-y-2 transition-transform duration-300 border border-gray-50">
+                            <div class="w-16 h-16 mx-auto bg-white text-brand-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold border-4 border-brand-100 shadow-sm group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-200 transition-colors relative z-10">
+                                <i data-lucide="key" size="24"></i>
+                            </div>
+                            <h4 class="text-xl font-bold mb-2">交付运维</h4>
+                            <p class="text-gray-500 text-sm">高标准验收交付，并提供全生命周期的物业运维与技术支持。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div>
+                        <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">精品案例</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold text-gray-900">见证城市生长</h3>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2" id="project-filters">
+                        <!-- Filters injected by JS -->
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid">
+                    <!-- Projects injected by JS -->
+                </div>
+
+                <div class="text-center mt-12">
+                    <button
+                        class="inline-flex items-center px-6 py-3 border border-brand-700 text-brand-700 font-semibold hover:bg-brand-700 hover:text-white transition-all rounded">
+                        查看更多案例 <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section (Enhanced) -->
+        <section id="news" class="py-20 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">新闻中心</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">公司最新动态</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- News Item 1 -->
+                    <div class="group cursor-pointer flex flex-col h-full">
+                        <div class="overflow-hidden rounded-lg mb-4 aspect-video relative">
+                            <div class="absolute top-4 left-4 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded z-10">中标快讯</div>
+                            <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=800&q=80" alt="News 1"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-2">
+                            <i data-lucide="calendar" size="14"></i>
+                            <span>2023-12-24</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-brand-600 transition-colors">秋甜科技中标重庆智慧社区改造项目
+                        </h4>
+                        <p class="text-gray-600 text-sm line-clamp-3 mb-4 flex-grow">
+                            经过多轮激烈角逐，重庆秋甜网络科技有限公司凭借卓越的智能化方案和扎实的工程实力，成功中标南岸区重点民生工程——智慧社区改造项目。
+                        </p>
+                        <span class="text-brand-600 font-semibold text-sm flex items-center mt-auto">阅读详情 <i data-lucide="arrow-right" class="ml-1 w-3 h-3"></i></span>
+                    </div>
+                    <!-- News Item 2 -->
+                    <div class="group cursor-pointer flex flex-col h-full">
+                        <div class="overflow-hidden rounded-lg mb-4 aspect-video relative">
+                            <div class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded z-10">企业成立</div>
+                            <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80" alt="News 2"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-2">
+                            <i data-lucide="calendar" size="14"></i>
+                            <span>2023-09-15</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-brand-600 transition-colors">重庆秋甜网络科技有限公司正式挂牌成立
+                        </h4>
+                        <p class="text-gray-600 text-sm line-clamp-3 mb-4 flex-grow">
+                            2023年9月，重庆秋甜网络科技有限公司在南岸区正式挂牌成立，标志着公司正式进军建筑科技领域，开启智慧城市建设新篇章。
+                        </p>
+                        <span class="text-brand-600 font-semibold text-sm flex items-center mt-auto">阅读详情 <i data-lucide="arrow-right" class="ml-1 w-3 h-3"></i></span>
+                    </div>
+                    <!-- News Item 3 -->
+                    <div class="group cursor-pointer flex flex-col h-full">
+                        <div class="overflow-hidden rounded-lg mb-4 aspect-video relative">
+                            <div class="absolute top-4 left-4 bg-brand-600 text-white text-xs font-bold px-3 py-1 rounded z-10">企业文化</div>
+                            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=800&q=80" alt="News 3"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 mb-2">
+                            <i data-lucide="calendar" size="14"></i>
+                            <span>2023-10-01</span>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-brand-600 transition-colors">公司召开首届战略发展研讨会
+                        </h4>
+                        <p class="text-gray-600 text-sm line-clamp-3 mb-4 flex-grow">
+                            公司管理层在会上确立了“以创新为动力，以质量为基石”的核心战略，强调要将前沿网络技术应用于传统建筑工程中。
+                        </p>
+                        <span class="text-brand-600 font-semibold text-sm flex items-center mt-auto">阅读详情 <i data-lucide="arrow-right" class="ml-1 w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section (New Images) -->
+        <section id="team" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">管理团队</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">精英领航 筑梦未来</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Member 1 (CEO) -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg group">
+                        <div class="aspect-[3/4] overflow-hidden relative">
+                            <!-- Asian Male Business Portrait -->
+                            <img src="https://images.unsplash.com/photo-1558222218-b7b54eede3f3?auto=format&fit=crop&w=800&q=80" alt="CEO"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 object-top">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                <p class="text-white text-sm italic">"以匠心致初心，以品质立天地。"</p>
+                            </div>
+                        </div>
+                        <div class="p-6 text-center relative">
+                            <h4 class="text-xl font-bold text-gray-900">张总</h4>
+                            <p class="text-brand-600 font-medium mb-4 text-sm uppercase tracking-wider">创始人 & CEO</p>
+                            <div class="w-12 h-1 bg-accent-500 mx-auto mb-4"></div>
+                            <p class="text-gray-500 text-sm mb-4">深耕建筑与科技领域多年，致力于推动行业数字化转型。</p>
+                            <div class="flex justify-center gap-4 text-gray-400">
+                                <i data-lucide="linkedin" size="18" class="hover:text-brand-600 cursor-pointer"></i>
+                                <i data-lucide="twitter" size="18" class="hover:text-brand-600 cursor-pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Member 2 (CTO) -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg group">
+                        <div class="aspect-[3/4] overflow-hidden relative">
+                            <!-- Asian Male Engineer/Business -->
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="CTO"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 object-top">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold text-gray-900">李建国</h4>
+                            <p class="text-brand-600 font-medium mb-4 text-sm uppercase tracking-wider">总工程师</p>
+                             <div class="w-12 h-1 bg-accent-500 mx-auto mb-4"></div>
+                             <p class="text-gray-500 text-sm mb-4">主导多项重点工程技术攻关，拥有丰富的智慧工地实施经验。</p>
+                            <div class="flex justify-center gap-4 text-gray-400">
+                                <i data-lucide="linkedin" size="18" class="hover:text-brand-600 cursor-pointer"></i>
+                                <i data-lucide="twitter" size="18" class="hover:text-brand-600 cursor-pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Member 3 (Design Director) -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-lg group">
+                        <div class="aspect-[3/4] overflow-hidden relative">
+                            <!-- Asian Female Professional -->
+                            <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?auto=format&fit=crop&w=800&q=80" alt="Design Director"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 object-top">
+                        </div>
+                        <div class="p-6 text-center">
+                            <h4 class="text-xl font-bold text-gray-900">陈雅雯 (Sarah)</h4>
+                            <p class="text-brand-600 font-medium mb-4 text-sm uppercase tracking-wider">设计总监</p>
+                             <div class="w-12 h-1 bg-accent-500 mx-auto mb-4"></div>
+                             <p class="text-gray-500 text-sm mb-4">擅长将现代科技美学与传统建筑文化融合，打造独特的空间体验。</p>
+                            <div class="flex justify-center gap-4 text-gray-400">
+                                <i data-lucide="linkedin" size="18" class="hover:text-brand-600 cursor-pointer"></i>
+                                <i data-lucide="twitter" size="18" class="hover:text-brand-600 cursor-pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section id="partners" class="py-16 bg-white border-t border-gray-100">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-10">
+                    <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">合作伙伴</h2>
+                    <h3 class="text-2xl font-bold text-gray-900">携手共赢 创造价值</h3>
+                </div>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                    <!-- Partner Logos Placeholders -->
+                    <div class="flex flex-col items-center gap-2 group cursor-pointer">
+                         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-blue-50 transition-colors">
+                            <i data-lucide="hexagon" class="text-gray-600 group-hover:text-blue-600" size="32"></i>
+                         </div>
+                         <span class="font-bold text-gray-700 group-hover:text-blue-600">华润置地</span>
+                    </div>
+                     <div class="flex flex-col items-center gap-2 group cursor-pointer">
+                         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-red-50 transition-colors">
+                            <i data-lucide="triangle" class="text-gray-600 group-hover:text-red-600" size="32"></i>
+                         </div>
+                         <span class="font-bold text-gray-700 group-hover:text-red-600">万科集团</span>
+                    </div>
+                     <div class="flex flex-col items-center gap-2 group cursor-pointer">
+                         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-green-50 transition-colors">
+                            <i data-lucide="circle" class="text-gray-600 group-hover:text-green-600" size="32"></i>
+                         </div>
+                         <span class="font-bold text-gray-700 group-hover:text-green-600">保利发展</span>
+                    </div>
+                     <div class="flex flex-col items-center gap-2 group cursor-pointer">
+                         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-orange-50 transition-colors">
+                            <i data-lucide="square" class="text-gray-600 group-hover:text-orange-600" size="32"></i>
+                         </div>
+                         <span class="font-bold text-gray-700 group-hover:text-orange-600">中海地产</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 group cursor-pointer">
+                         <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-purple-50 transition-colors">
+                            <i data-lucide="building" class="text-gray-600 group-hover:text-purple-600" size="32"></i>
+                         </div>
+                         <span class="font-bold text-gray-700 group-hover:text-purple-600">绿地控股</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-brand-900 text-white relative overflow-hidden">
+            <!-- Background decoration -->
+            <div class="absolute top-0 left-0 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl">
+            </div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl">
+            </div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-accent-500 font-bold tracking-wider uppercase mb-2">客户评价</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4">口碑源于品质</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+                        <div class="flex text-accent-500 mb-4">
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic leading-relaxed">"秋甜科技的专业程度令人印象深刻。作为一家新公司，他们不仅按时交付了项目，而且在智能化细节处理上超出了我们的预期，展现了极高的技术水准。"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-brand-900 font-bold">W</div>
+                            <div>
+                                <h5 class="font-bold text-sm">王总</h5>
+                                <p class="text-xs text-gray-400">某大型地产开发商 区域总经理</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+                        <div class="flex text-accent-500 mb-4">
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic leading-relaxed">"在市政园林项目中，秋甜团队展现了极高的审美水准。他们对植物配置的理解非常到位，为市民打造了一个完美的休闲生态空间，后期智慧养护也非常负责。"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-brand-900 font-bold">L</div>
+                            <div>
+                                <h5 class="font-bold text-sm">李局长</h5>
+                                <p class="text-xs text-gray-400">市园林局</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/10 hover:bg-white/20 transition-colors">
+                        <div class="flex text-accent-500 mb-4">
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                            <i data-lucide="star" size="16" fill="currentColor"></i>
+                        </div>
+                        <p class="text-gray-300 mb-6 italic leading-relaxed">"智能楼宇系统的集成非常顺畅，大大提升了我们办公大楼的管理效率。从设计咨询到最后的调试培训，秋甜科技的团队都表现出了极高的职业素养。"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-brand-900 font-bold">C</div>
+                            <div>
+                                <h5 class="font-bold text-sm">陈经理</h5>
+                                <p class="text-xs text-gray-400">高新科技园区 物业总监</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-accent-600 font-bold tracking-wider uppercase mb-2">常见问题</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">解答您的疑惑</h3>
+                </div>
+
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-gray-900 hover:bg-gray-50 transition-colors"
+                            onclick="this.nextElementSibling.classList.toggle('hidden'); (this.querySelector('svg') || this.querySelector('i')).classList.toggle('rotate-180')">
+                            秋甜网络科技主要承接哪些类型的项目？
+                            <i data-lucide="chevron-down" class="transition-transform duration-300 text-gray-400"></i>
+                        </button>
+                        <div class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                            我们主要承接大型商业综合体、高端住宅、市政公用工程、工业园区建设以及室内外装饰装修工程。同时，作为网络科技公司，我们特别擅长智能楼宇系统集成服务与智慧工地解决方案。
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-gray-900 hover:bg-gray-50 transition-colors"
+                            onclick="this.nextElementSibling.classList.toggle('hidden'); (this.querySelector('svg') || this.querySelector('i')).classList.toggle('rotate-180')">
+                            如何保证施工质量和工期？
+                            <i data-lucide="chevron-down" class="transition-transform duration-300 text-gray-400"></i>
+                        </button>
+                        <div class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                            我们严格执行ISO 9001质量管理体系，每个项目均配备专业的项目经理。通过BIM技术与智慧工地管理平台进行实时施工模拟与监控，结合科学的进度管理，确保项目按时按质交付。
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-gray-900 hover:bg-gray-50 transition-colors"
+                            onclick="this.nextElementSibling.classList.toggle('hidden'); (this.querySelector('svg') || this.querySelector('i')).classList.toggle('rotate-180')">
+                            是否有售后维保服务？
+                            <i data-lucide="chevron-down" class="transition-transform duration-300 text-gray-400"></i>
+                        </button>
+                        <div class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                            是的，我们提供完善的售后维保服务。工程交付后，我们会提供详细的维护手册，并设立24小时服务热线。对于智能化系统与建筑工程，我们严格按照国家规定提供保修，并定期进行回访检查。
+                        </div>
+                    </div>
+                     <!-- FAQ 4 -->
+                    <div class="bg-white rounded-lg shadow-sm overflow-hidden border border-gray-100">
+                        <button
+                            class="w-full px-6 py-5 text-left flex justify-between items-center font-bold text-gray-900 hover:bg-gray-50 transition-colors"
+                            onclick="this.nextElementSibling.classList.toggle('hidden'); (this.querySelector('svg') || this.querySelector('i')).classList.toggle('rotate-180')">
+                            贵公司在绿色建筑方面有什么经验？
+                            <i data-lucide="chevron-down" class="transition-transform duration-300 text-gray-400"></i>
+                        </button>
+                        <div class="hidden px-6 pb-6 text-gray-600 text-sm leading-relaxed border-t border-gray-100 bg-gray-50/50">
+                            秋甜科技是绿色建筑的积极践行者。我们利用数字技术优化能源管理，熟练掌握装配式建筑技术、雨水收集系统等绿色施工技术，致力于通过科技手段减少建筑全生命周期的碳排放。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900 text-white">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                    <!-- Contact Info -->
+                    <div>
+                        <h2 class="text-accent-500 font-bold tracking-wider uppercase mb-2">联系我们</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold mb-8">期待与您的合作</h3>
+                        <p class="text-gray-400 mb-10 leading-relaxed max-w-md">
+                            无论您有工程建设需求，还是希望咨询合作事宜，秋甜网络科技随时为您提供专业的服务支持。
+                        </p>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4 group">
+                                <div class="bg-brand-800 p-3 rounded-lg group-hover:bg-brand-700 transition-colors">
+                                    <i data-lucide="map-pin" class="text-accent-500" size="24"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-lg">公司总部</h5>
+                                    <p class="text-gray-400 text-sm">重庆市南岸区南坪镇回龙路66号25幢第1层商业999单元1-1</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 group">
+                                <div class="bg-brand-800 p-3 rounded-lg group-hover:bg-brand-700 transition-colors">
+                                    <i data-lucide="phone" class="text-accent-500" size="24"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-lg">服务热线</h5>
+                                    <p class="text-gray-400 text-sm">15978076808</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 group">
+                                <div class="bg-brand-800 p-3 rounded-lg group-hover:bg-brand-700 transition-colors">
+                                    <i data-lucide="mail" class="text-accent-500" size="24"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-lg">电子邮箱</h5>
+                                    <p class="text-gray-400 text-sm">qiutiannet@cqqiutiannet.asia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="bg-white rounded-xl p-8 text-gray-900 shadow-2xl">
+                        <h4 class="text-2xl font-bold mb-6 text-brand-900">在线留言</h4>
+                        <form class="space-y-4" onsubmit="event.preventDefault(); alert('感谢您的留言，我们会尽快联系您！');">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">您的姓名</label>
+                                    <input type="text"
+                                        class="w-full bg-gray-50 border border-gray-200 rounded p-3 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
+                                        placeholder="请输入姓名" required/>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">联系电话</label>
+                                    <input type="tel"
+                                        class="w-full bg-gray-50 border border-gray-200 rounded p-3 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
+                                        placeholder="请输入电话号码" required/>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">电子邮箱</label>
+                                <input type="email"
+                                    class="w-full bg-gray-50 border border-gray-200 rounded p-3 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
+                                    placeholder="example@mail.com" required/>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">留言内容</label>
+                                <textarea rows="4"
+                                    class="w-full bg-gray-50 border border-gray-200 rounded p-3 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all"
+                                    placeholder="请详细描述您的项目需求或疑问..." required></textarea>
+                            </div>
+
+                            <button
+                                class="w-full bg-brand-700 hover:bg-brand-800 text-white font-bold py-3 rounded transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                                发送留言
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-16 pb-8 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="building-2" class="text-accent-500" size="32"></i>
+                        <span class="text-2xl font-bold tracking-wider">
+                            QIUTIAN<span class="text-accent-500">TECH</span>
+                        </span>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                        重庆秋甜网络科技有限公司 - 致力于打造世界一流的建筑工程与城市服务商。科技赋能，智绘未来。
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="bg-gray-800 p-2 rounded-full hover:bg-accent-500 hover:text-white transition-all"><i
+                                data-lucide="facebook" size="18"></i></a>
+                        <a href="#"
+                            class="bg-gray-800 p-2 rounded-full hover:bg-accent-500 hover:text-white transition-all"><i
+                                data-lucide="twitter" size="18"></i></a>
+                        <a href="#"
+                            class="bg-gray-800 p-2 rounded-full hover:bg-accent-500 hover:text-white transition-all"><i
+                                data-lucide="linkedin" size="18"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-lg font-bold mb-4 border-l-4 border-accent-500 pl-3">快速链接</h5>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="javascript:scrollToSection('about')" class="hover:text-accent-500 transition-colors">关于我们</a></li>
+                        <li><a href="javascript:scrollToSection('services')" class="hover:text-accent-500 transition-colors">核心业务</a></li>
+                        <li><a href="javascript:scrollToSection('projects')" class="hover:text-accent-500 transition-colors">项目案例</a></li>
+                        <li><a href="javascript:scrollToSection('news')" class="hover:text-accent-500 transition-colors">新闻动态</a></li>
+                        <li><a href="javascript:scrollToSection('team')" class="hover:text-accent-500 transition-colors">管理团队</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-lg font-bold mb-4 border-l-4 border-accent-500 pl-3">业务领域</h5>
+                    <ul class="space-y-2 text-gray-400 text-sm">
+                        <li><a href="#" class="hover:text-accent-500 transition-colors">房屋建筑工程</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition-colors">市政公用工程</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition-colors">机电安装工程</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition-colors">建筑装饰装修</a></li>
+                        <li><a href="#" class="hover:text-accent-500 transition-colors">智能建筑科技</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-lg font-bold mb-4 border-l-4 border-accent-500 pl-3">订阅我们</h5>
+                     <p class="text-gray-500 text-xs mb-4">
+                        订阅我们的电子期刊，获取最新行业动态和企业资讯。
+                    </p>
+                    <div class="flex">
+                        <input type="email" placeholder="您的邮箱" class="bg-gray-800 text-white px-4 py-2 text-sm w-full rounded-l focus:outline-none focus:ring-1 focus:ring-accent-500">
+                        <button class="bg-accent-600 px-4 py-2 rounded-r hover:bg-accent-700 transition-colors text-sm font-bold">订阅</button>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+                <p>&copy; <span id="year"></span> Chongqing Qiutian Network Technology Co., Ltd. All Rights Reserved. <a href="#" class="hover:text-white">cqqiutiannet.asia</a></p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">隐私政策</a>
+                    <a href="#" class="hover:text-white">服务条款</a>
+                    <a href="#" class="hover:text-white">网站地图</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI ChatBot -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Window -->
+        <div id="chat-window"
+            class="hidden bg-white rounded-2xl shadow-2xl w-80 md:w-96 mb-4 border border-gray-200 flex flex-col animate-fade-in-up overflow-hidden"
+            style="max-height: 500px; height: 500px;">
+            <!-- Header -->
+            <div class="bg-brand-900 text-white p-4 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-white/20 p-1.5 rounded-full">
+                        <i data-lucide="bot" size="20"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-sm">秋甜智能助手</h3>
+                        <p class="text-xs text-brand-200 flex items-center gap-1">
+                            <span class="w-2 h-2 bg-green-400 rounded-full block"></span>
+                            在线中
+                        </p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white/80 hover:text-white transition-colors">
+                    <i data-lucide="x" size="20"></i>
+                </button>
+            </div>
+
+            <!-- Messages Area -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 bg-gray-50 space-y-4">
+                <div class="flex justify-start">
+                    <div
+                        class="max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm bg-white text-gray-800 border border-gray-100 rounded-bl-none">
+                        您好！我是重庆秋甜网络科技的智能助手。请问有什么可以帮您？我可以为您介绍我们的建筑工程业务、智慧解决方案，或者提供联系方式。
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Key Input (if needed) -->
+            <div id="api-key-input-area" class="p-4 bg-gray-100 border-t border-gray-200 hidden">
+                <p class="text-xs text-gray-500 mb-2">请输入您的 Google Gemini API Key 以启用聊天功能：</p>
+                <div class="flex gap-2">
+                    <input type="password" id="api-key-input" class="flex-1 text-sm border rounded p-2"
+                        placeholder="API Key">
+                    <button onclick="saveApiKey()"
+                        class="bg-brand-600 text-white text-xs px-3 py-2 rounded hover:bg-brand-700">保存</button>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="p-4 bg-white border-t border-gray-100">
+                <div
+                    class="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 border border-transparent focus-within:border-brand-300 focus-within:bg-white transition-all">
+                    <input type="text" id="chat-input"
+                        class="flex-1 bg-transparent focus:outline-none text-sm text-gray-800 placeholder-gray-400"
+                        placeholder="输入您的问题..." onkeydown="handleChatKeyPress(event)">
+                    <button onclick="sendMessage()" id="send-btn"
+                        class="p-1.5 rounded-full transition-all bg-gray-200 text-gray-400 cursor-not-allowed" disabled>
+                        <i data-lucide="send" size="16"></i>
+                    </button>
+                </div>
+                <p class="text-[10px] text-center text-gray-400 mt-2">
+                    AI生成内容仅供参考，详情请咨询人工客服。
+                </p>
+            </div>
+        </div>
+
+        <!-- Toggle Button -->
+        <button onclick="toggleChat()" id="chat-toggle-btn"
+            class="p-4 rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center bg-brand-600 animate-bounce-subtle">
+            <i data-lucide="message-square" class="text-white" size="28"></i>
+        </button>
+    </div>
+
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+        window.GoogleGenerativeAI = GoogleGenerativeAI;
+    </script>
+
+    <script>
+        // --- Constants ---
+        const NAV_ITEMS = [
+            { label: '首页', id: 'home' },
+            { label: '关于我们', id: 'about' },
+            { label: '核心业务', id: 'services' },
+            { label: '服务流程', id: 'process' },
+            { label: '精品案例', id: 'projects' },
+            { label: '新闻中心', id: 'news' },
+            { label: '管理团队', id: 'team' },
+            { label: '合作伙伴', id: 'partners' }, // Added
+            { label: '联系我们', id: 'contact' },
+        ];
+
+        const SERVICES = [
+            { title: '工程建设', description: '提供全方位的建筑工程施工总承包服务，涵盖商业、住宅及公共设施建设。我们拥有甲级资质，确保每一寸建筑的坚固与安全。', icon: 'hard-hat' },
+            { title: '装饰装修', description: '高端室内外装饰设计与施工一体化，打造舒适、环保、极具美感的空间。从概念设计到软装陈设，为您提供交钥匙服务。', icon: 'paint-bucket' },
+            { title: '市政园林', description: '城市基础设施建设与园林绿化工程，致力于改善城市生态环境与居住品质。包括道路桥梁、公园广场及水体治理。', icon: 'trees' },
+            { title: '智能科技', description: '智慧楼宇与智能化系统集成解决方案，为现代建筑赋予科技智慧。涵盖安防监控、楼宇自控、能源管理等系统。', icon: 'cpu' }
+        ];
+
+        const PROJECTS = [
+            { id: 1, title: '广州国际金融中心二期', category: '商业综合体', imageUrl: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80' },
+            { id: 2, title: '深蓝湾畔高端住宅区', category: '住宅工程', imageUrl: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80' },
+            { id: 3, title: '未来科技产业园', category: '工业园区', imageUrl: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=800&q=80' },
+            { id: 4, title: '滨海生态公园', category: '市政园林', imageUrl: 'https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80' },
+            { id: 5, title: '云端艺术博物馆', category: '公共设施', imageUrl: 'https://images.unsplash.com/photo-1554907984-15263bfd63bd?auto=format&fit=crop&w=800&q=80' },
+            { id: 6, title: '秋甜科技总部大楼', category: '办公大楼', imageUrl: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80' }
+        ];
+
+        // --- State ---
+        let activeSection = 'home';
+        let isMobileMenuOpen = false;
+        let isChatOpen = false;
+        let chatHistory = [];
+        let genAI = null;
+        let chatSession = null;
+        // Keep same local storage key for convenience if user already set it
+        let apiKey = localStorage.getItem('ronwa_api_key') || '';
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNav();
+            renderServices();
+            renderProjects('全部');
+            document.getElementById('year').textContent = new Date().getFullYear();
+            lucide.createIcons();
+
+            // Scroll Listener
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initial check
+
+            // Intersection Observer for Active Section
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        activeSection = entry.target.id;
+                        updateNavStyles();
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            NAV_ITEMS.forEach(item => {
+                const el = document.getElementById(item.id);
+                if (el) observer.observe(el);
+            });
+
+            // Chat Input Listener
+            const chatInput = document.getElementById('chat-input');
+            chatInput.addEventListener('input', (e) => {
+                const btn = document.getElementById('send-btn');
+                if (e.target.value.trim()) {
+                    btn.classList.remove('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                    btn.classList.add('bg-brand-600', 'text-white', 'hover:bg-brand-700', 'shadow-md');
+                    btn.disabled = false;
+                } else {
+                    btn.classList.add('bg-gray-200', 'text-gray-400', 'cursor-not-allowed');
+                    btn.classList.remove('bg-brand-600', 'text-white', 'hover:bg-brand-700', 'shadow-md');
+                    btn.disabled = true;
+                }
+            });
+
+            if (!apiKey) {
+                document.getElementById('api-key-input-area').classList.remove('hidden');
+            } else {
+                initAI();
+            }
+        });
+
+        // --- Navigation Logic ---
+        function renderNav() {
+            const desktopNav = document.getElementById('desktop-nav');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // Desktop
+            desktopNav.innerHTML = NAV_ITEMS.map(item => `
+                <button onclick="scrollToSection('${item.id}')" 
+                    class="nav-item text-sm font-medium uppercase tracking-wide transition-colors hover:text-accent-500 text-gray-200"
+                    data-id="${item.id}">
+                    ${item.label}
+                </button>
+            `).join('');
+
+            // Mobile
+            mobileMenu.innerHTML = NAV_ITEMS.map(item => `
+                <button onclick="scrollToSection('${item.id}'); toggleMobileMenu()" 
+                    class="mobile-nav-item py-3 px-6 text-left text-sm font-medium text-gray-600"
+                    data-id="${item.id}">
+                    ${item.label}
+                </button>
+            `).join('');
+        }
+
+        function updateNavStyles() {
+            const isScrolled = window.scrollY > 50;
+
+            // Desktop
+            document.querySelectorAll('.nav-item').forEach(btn => {
+                const id = btn.getAttribute('data-id');
+                const isActive = id === activeSection;
+
+                if (isScrolled) {
+                    btn.className = `nav-item text-sm font-medium uppercase tracking-wide transition-colors hover:text-accent-500 ${isActive ? 'text-brand-700 font-bold' : 'text-gray-600'}`;
+                } else {
+                    btn.className = `nav-item text-sm font-medium uppercase tracking-wide transition-colors hover:text-accent-500 ${isActive ? 'text-white font-bold border-b-2 border-accent-500' : 'text-gray-200'}`;
+                }
+            });
+
+            // Mobile
+            document.querySelectorAll('.mobile-nav-item').forEach(btn => {
+                const id = btn.getAttribute('data-id');
+                const isActive = id === activeSection;
+                btn.className = `mobile-nav-item py-3 px-6 text-left text-sm font-medium ${isActive ? 'text-brand-700 bg-brand-50' : 'text-gray-600'}`;
+            });
+        }
+
+        function handleScroll() {
+            const isScrolled = window.scrollY > 50;
+            const header = document.getElementById('main-header');
+            const logoBg = document.getElementById('logo-bg');
+            const logoText = document.getElementById('logo-text');
+            const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+
+            if (isScrolled) {
+                header.classList.add('bg-white', 'shadow-md', 'py-2');
+                header.classList.remove('bg-transparent', 'py-4');
+
+                logoBg.classList.add('bg-brand-700', 'text-white');
+                logoBg.classList.remove('bg-white', 'text-brand-900');
+
+                logoText.classList.add('text-brand-900');
+                logoText.classList.remove('text-white');
+
+                mobileMenuIcon.classList.add('text-brand-900');
+                mobileMenuIcon.classList.remove('text-white');
+            } else {
+                header.classList.remove('bg-white', 'shadow-md', 'py-2');
+                header.classList.add('bg-transparent', 'py-4');
+
+                logoBg.classList.remove('bg-brand-700', 'text-white');
+                logoBg.classList.add('bg-white', 'text-brand-900');
+
+                logoText.classList.remove('text-brand-900');
+                logoText.classList.add('text-white');
+
+                mobileMenuIcon.classList.remove('text-brand-900');
+                mobileMenuIcon.classList.add('text-white');
+            }
+            updateNavStyles();
+        }
+
+        window.scrollToSection = (id) => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                // activeSection = id; // Let observer handle this
+                // updateNavStyles();
+            }
+        };
+
+        window.toggleMobileMenu = () => {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            isMobileMenuOpen = !isMobileMenuOpen;
+
+            if (isMobileMenuOpen) {
+                menu.classList.remove('hidden');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                menu.classList.add('hidden');
+                icon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons();
+        };
+
+        // --- Services Logic ---
+        function renderServices() {
+            const grid = document.getElementById('services-grid');
+            grid.innerHTML = SERVICES.map(service => `
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 group border border-gray-100 flex flex-col h-full">
+                    <div class="w-16 h-16 bg-brand-50 rounded-full flex items-center justify-center text-brand-600 mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors duration-300 flex-shrink-0">
+                        <i data-lucide="${service.icon}" size="40"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">${service.title}</h4>
+                    <p class="text-gray-600 leading-relaxed text-sm flex-grow">
+                        ${service.description}
+                    </p>
+                    <div class="mt-4 pt-4 border-t border-gray-50">
+                        <a href="#" class="text-brand-600 text-sm font-bold hover:underline flex items-center">了解详情 <i data-lucide="arrow-right" class="ml-1 w-3 h-3"></i></a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- Projects Logic ---
+        function renderProjects(category) {
+            // Filters
+            const categories = ['全部', ...new Set(PROJECTS.map(p => p.category))];
+            const filterContainer = document.getElementById('project-filters');
+
+            filterContainer.innerHTML = categories.map(cat => `
+                <button onclick="renderProjects('${cat}')"
+                    class="px-4 py-2 rounded-full text-sm font-medium transition-all ${category === cat ? 'bg-brand-900 text-white shadow-md' : 'bg-white text-gray-600 hover:bg-gray-100 border border-gray-200'}">
+                    ${cat}
+                </button>
+            `).join('');
+
+            // Grid
+            const filtered = category === '全部' ? PROJECTS : PROJECTS.filter(p => p.category === category);
+            const grid = document.getElementById('projects-grid');
+
+            grid.innerHTML = filtered.map(project => `
+                <div class="group relative overflow-hidden rounded-lg shadow-lg aspect-[4/3] cursor-pointer">
+                    <img src="${project.imageUrl}" alt="${project.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"/>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
+                        <span class="text-accent-400 text-sm font-semibold uppercase mb-1 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                            ${project.category}
+                        </span>
+                        <h4 class="text-white text-xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            ${project.title}
+                        </h4>
+                        <p class="text-gray-300 text-xs mt-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-100 opacity-0 group-hover:opacity-100">
+                            点击查看项目详情与施工图集
+                        </p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- ChatBot Logic ---
+        window.toggleChat = () => {
+            const win = document.getElementById('chat-window');
+            const btn = document.getElementById('chat-toggle-btn');
+            const icon = btn.querySelector('i');
+
+            isChatOpen = !isChatOpen;
+
+            if (isChatOpen) {
+                win.classList.remove('hidden');
+                btn.classList.add('bg-gray-600', 'rotate-90');
+                btn.classList.remove('bg-brand-600', 'animate-bounce-subtle');
+                icon.setAttribute('data-lucide', 'x');
+                // Focus input
+                setTimeout(() => document.getElementById('chat-input').focus(), 300);
+            } else {
+                win.classList.add('hidden');
+                btn.classList.remove('bg-gray-600', 'rotate-90');
+                btn.classList.add('bg-brand-600', 'animate-bounce-subtle');
+                icon.setAttribute('data-lucide', 'message-square');
+            }
+            lucide.createIcons();
+        };
+
+        window.saveApiKey = () => {
+            const input = document.getElementById('api-key-input');
+            const key = input.value.trim();
+            if (key) {
+                apiKey = key;
+                localStorage.setItem('ronwa_api_key', key);
+                document.getElementById('api-key-input-area').classList.add('hidden');
+                initAI();
+                addMessage('model', 'API Key 已保存，您可以开始提问了。');
+            }
+        };
+
+        function initAI() {
+            if (!apiKey || !window.GoogleGenerativeAI) return;
+
+            try {
+                genAI = new window.GoogleGenerativeAI(apiKey);
+                const model = genAI.getGenerativeModel({
+                    model: "gemini-2.5-flash",
+                    systemInstruction: `
+                      你是一家名为"重庆秋甜网络科技有限公司" (Chongqing Qiutian Network Technology Co., Ltd.) 的企业官方AI助手。
+                      你的语气应该是：专业、有礼貌、乐于助人且简洁。
+                      
+                      公司信息:
+                      - 成立于2023年，总部在重庆市南岸区。
+                      - 地址：重庆市南岸区南坪镇回龙路66号25幢第1层商业999单元1-1
+                      - 核心业务：建筑工程、装饰装修、市政园林、智能科技。
+                      - 价值观：诚信、创新、卓越。
+                      - 联系电话：15978076808。
+                      - 邮箱：qiutiannet@cqqiutiannet.asia。
+                      
+                      回答策略：
+                      1. 简短回答用户的问题。
+                      2. 如果用户询问项目案例，推荐他们看"精品案例"部分。
+                      3. 如果用户询问不知道的信息，请礼貌地建议他们通过电话或邮件联系人工客服。
+                      请用中文回答。
+                    `
+                });
+                chatSession = model.startChat();
+            } catch (e) {
+                console.error("AI Init Error", e);
+            }
+        }
+
+        window.handleChatKeyPress = (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        };
+
+        window.sendMessage = async () => {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            // Add User Message
+            addMessage('user', text);
+            input.value = '';
+            document.getElementById('send-btn').disabled = true;
+            document.getElementById('send-btn').classList.add('bg-gray-200');
+
+            // Show Loading
+            const loadingId = addLoading();
+
+            try {
+                if (!chatSession) {
+                    if (!apiKey) {
+                        removeLoading(loadingId);
+                        addMessage('model', '请先输入 API Key 才能使用智能助手。');
+                        document.getElementById('api-key-input-area').classList.remove('hidden');
+                        return;
+                    }
+                    initAI();
+                }
+
+                const result = await chatSession.sendMessage(text);
+                const response = result.response.text();
+
+                removeLoading(loadingId);
+                addMessage('model', response);
+            } catch (error) {
+                console.error(error);
+                removeLoading(loadingId);
+                addMessage('model', '抱歉，遇到了一些网络问题，请检查您的 API Key 或稍后再试。', true);
+            }
+        };
+
+        function addMessage(role, text, isError = false) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = `flex ${role === 'user' ? 'justify-end' : 'justify-start'}`;
+
+            const bubble = document.createElement('div');
+            bubble.className = `max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed shadow-sm ${role === 'user'
+                ? 'bg-brand-600 text-white rounded-br-none'
+                : 'bg-white text-gray-800 border border-gray-100 rounded-bl-none'
+                } ${isError ? 'border-red-300 bg-red-50 text-red-600' : ''}`;
+            bubble.textContent = text;
+
+            div.appendChild(bubble);
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function addLoading() {
+            const container = document.getElementById('chat-messages');
+            const id = 'loading-' + Date.now();
+            const div = document.createElement('div');
+            div.id = id;
+            div.className = 'flex justify-start';
+            div.innerHTML = `
+                <div class="bg-white p-3 rounded-2xl rounded-bl-none border border-gray-100 shadow-sm">
+                    <i data-lucide="loader-2" class="animate-spin text-brand-600" size="20"></i>
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+            lucide.createIcons();
+            return id;
+        }
+
+        function removeLoading(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+    </script>
+</body>
+
+</html>
